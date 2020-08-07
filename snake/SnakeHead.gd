@@ -14,6 +14,9 @@ var apple_eaten = false
 onready var head = $SnakeSectionSprite
 onready var sections = [head]
 onready var playArea = get_tree().current_scene.get_node("PlayArea")
+onready var pickupSound = $PickupSound
+onready var lossSound = $LossSound
+onready var stepTimer = $Timer
 
 func _ready():
 	randomize()
@@ -112,5 +115,7 @@ func _on_Area2D_area_entered(area):
 	if collided_layer == 8:
 		apple_eaten = true
 		area.eat()
+		pickupSound.play()
 	elif collided_layer == 5:
-		get_tree().paused = true
+		stepTimer.stop()
+		lossSound.play()

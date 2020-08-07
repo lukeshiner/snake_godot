@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/loss.wav-81fe5bd9a6416423dcdda19b892ff68c.sample"
+
+[deps]
+
+source_file="res://snake/loss.wav"
+dest_files=[ "res://.import/loss.wav-81fe5bd9a6416423dcdda19b892ff68c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

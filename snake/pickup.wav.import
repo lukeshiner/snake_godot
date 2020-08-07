@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pickup.wav-42a1212ccc6e2b82b5f0c0b4862a4f2e.sample"
+
+[deps]
+
+source_file="res://snake/pickup.wav"
+dest_files=[ "res://.import/pickup.wav-42a1212ccc6e2b82b5f0c0b4862a4f2e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
