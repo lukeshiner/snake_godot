@@ -76,11 +76,11 @@ func wrap_world():
 		moved_from = head.global_position
 		moved_from.x -= sprite_size
 	elif exited_direction == Vector2.LEFT:
-		head.global_position.x = playArea.right.global_position.x
+		head.global_position.x = playArea.right.global_position.x - sprite_size
 		moved_from = head.global_position
 		moved_from.x += sprite_size
 	elif exited_direction == Vector2.UP:
-		head.global_position.y = playArea.bottom.global_position.y
+		head.global_position.y = playArea.bottom.global_position.y - sprite_size
 		moved_from = head.global_position
 		moved_from.y += sprite_size
 	elif exited_direction == Vector2.DOWN:
@@ -104,12 +104,14 @@ func _on_Timer_timeout():
 	)
 	update_length()
 	wrap_world()
+	head.global_position = head.global_position.snapped(Vector2(sprite_size, sprite_size))
 
 
 func _on_Area2D_area_entered(area):
 	var collided_layer = area.collision_layer
 	if collided_layer == 8:
 		apple_eaten = true
+		area.eat()
 	elif collided_layer == 5:
 		get_tree().paused = true
 
