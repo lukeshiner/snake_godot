@@ -56,4 +56,52 @@ position = Vector2( 128, 192 )
 [node name="Right" parent="PlayArea" index="3"]
 position = Vector2( 224, 96 )
 
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpButton" type="Button" parent="Control"]
+margin_left = 240.0
+margin_top = 32.0
+margin_right = 304.0
+margin_bottom = 68.0
+text = "Up"
+
+[node name="LeftButton" type="Button" parent="Control"]
+margin_left = 224.0
+margin_top = 80.0
+margin_right = 268.0
+margin_bottom = 120.0
+text = "Left"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right Button" type="Button" parent="Control"]
+margin_left = 272.0
+margin_top = 80.0
+margin_right = 304.0
+margin_bottom = 120.0
+text = "Right"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownButton" type="Button" parent="Control"]
+margin_left = 240.0
+margin_top = 128.0
+margin_right = 304.0
+margin_bottom = 168.0
+text = "Down"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/UpButton" to="SnakeHead" method="_on_UpButton_pressed"]
+[connection signal="pressed" from="Control/LeftButton" to="SnakeHead" method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="Control/Right Button" to="SnakeHead" method="_on_Right_Button_pressed"]
+[connection signal="pressed" from="Control/DownButton" to="SnakeHead" method="_on_DownButton_pressed"]
+
 [editable path="PlayArea"]
