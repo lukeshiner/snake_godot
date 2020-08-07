@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/digits.png" type="Texture" id=1]
+[ext_resource path="res://ui/score_screen.png" type="Texture" id=2]
+[ext_resource path="res://ui/ScoreScreen.gd" type="Script" id=3]
+
+[node name="ScoreScreen" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Screen" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Digits" type="Node2D" parent="."]
+
+[node name="Digit" type="Sprite" parent="Digits"]
+position = Vector2( 3, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5
+
+[node name="Digit2" type="Sprite" parent="Digits"]
+position = Vector2( 16, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5
+
+[node name="Digit3" type="Sprite" parent="Digits"]
+position = Vector2( 29, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5
+
+[node name="Digit4" type="Sprite" parent="Digits"]
+position = Vector2( 42, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5
+
+[node name="Digit5" type="Sprite" parent="Digits"]
+position = Vector2( 55, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5
+
+[node name="Digit6" type="Sprite" parent="Digits"]
+position = Vector2( 68, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5
+
+[node name="Digit7" type="Sprite" parent="Digits"]
+position = Vector2( 81, 8 )
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 5

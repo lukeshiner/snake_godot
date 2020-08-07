@@ -114,19 +114,3 @@ func _on_Area2D_area_entered(area):
 		area.eat()
 	elif collided_layer == 5:
 		get_tree().paused = true
-
-
-func _on_UpButton_pressed():
-	next_direction = Vector2.UP
-
-
-func _on_LeftButton_pressed():
-	next_direction = Vector2.LEFT
-
-
-func _on_Right_Button_pressed():
-	next_direction = Vector2.RIGHT
-
-
-func _on_DownButton_pressed():
-	next_direction = Vector2.DOWN

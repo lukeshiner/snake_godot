@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/ui_buttons.png" type="Texture" id=1]
+[ext_resource path="res://ui/DirectionButton.gd" type="Script" id=2]
+
+[node name="DirectionButton" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 48.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirectionButtonSprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+hframes = 4
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
