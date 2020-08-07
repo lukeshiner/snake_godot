@@ -8,10 +8,12 @@ onready var SnakeBody = preload("res://snake/SnakeBody.tscn")
 const directions = [Vector2.UP, Vector2.LEFT, Vector2.RIGHT, Vector2.DOWN]
 var direction = Vector2.RIGHT
 var next_direction = direction
+var moved_from = Vector2.ZERO
 var apple_eaten = false
 
 onready var head = $SnakeSectionSprite
 onready var sections = [head]
+onready var playArea = get_tree().current_scene.get_node("PlayArea")
 
 func _ready():
 	randomize()
@@ -25,6 +27,8 @@ func _ready():
 			head.global_position,
 			Vector2(head.global_position.x - sprite_size*(i+1), head.global_position.y)
 		)
+	moved_from = head.global_position
+	moved_from.x -= sprite_size
 	set_tail()
 
 func add_section(location, previous, next):
@@ -65,6 +69,28 @@ func update_length():
 	else:
 		apple_eaten = false
 
+func wrap_world():
+	var exited_direction = playArea.exited_direction(head.global_position)
+	if exited_direction == Vector2.RIGHT:
+		head.global_position.x = playArea.left.global_position.x + sprite_size
+		moved_from = head.global_position
+		moved_from.x -= sprite_size
+	elif exited_direction == Vector2.LEFT:
+		head.global_position.x = playArea.right.global_position.x - sprite_size
+		moved_from = head.global_position
+		moved_from.x += sprite_size
+	elif exited_direction == Vector2.UP:
+		head.global_position.y = playArea.bottom.global_position.y - sprite_size
+		moved_from = head.global_position
+		moved_from.y += sprite_size
+	elif exited_direction == Vector2.DOWN:
+		head.global_position.y = playArea.top.global_position.y + sprite_size
+		moved_from = head.global_position
+		moved_from.y -= sprite_size
+	else:
+		moved_from = sections[1].global_position
+
+
 func _on_Timer_timeout():
 	update_direction()
 	var old_location = head.global_position
@@ -74,9 +100,10 @@ func _on_Timer_timeout():
 	add_section(
 		old_location,
 		head.global_position,
-		sections[1].global_position
+		moved_from
 	)
 	update_length()
+	wrap_world()
 
 
 func _on_Area2D_area_entered(area):
