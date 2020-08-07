@@ -72,19 +72,19 @@ func update_length():
 func wrap_world():
 	var exited_direction = playArea.exited_direction(head.global_position)
 	if exited_direction == Vector2.RIGHT:
-		head.global_position.x = playArea.left.global_position.x + sprite_size
+		head.global_position.x = playArea.left.global_position.x
 		moved_from = head.global_position
 		moved_from.x -= sprite_size
 	elif exited_direction == Vector2.LEFT:
-		head.global_position.x = playArea.right.global_position.x - sprite_size
+		head.global_position.x = playArea.right.global_position.x
 		moved_from = head.global_position
 		moved_from.x += sprite_size
 	elif exited_direction == Vector2.UP:
-		head.global_position.y = playArea.bottom.global_position.y - sprite_size
+		head.global_position.y = playArea.bottom.global_position.y
 		moved_from = head.global_position
 		moved_from.y += sprite_size
 	elif exited_direction == Vector2.DOWN:
-		head.global_position.y = playArea.top.global_position.y + sprite_size
+		head.global_position.y = playArea.top.global_position.y
 		moved_from = head.global_position
 		moved_from.y -= sprite_size
 	else:
