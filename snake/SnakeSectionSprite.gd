@@ -1,6 +1,4 @@
-extends Area2D
-
-onready var sprite = $Sprite
+extends Sprite
 
 enum {
 	HEAD_UP,
@@ -84,4 +82,4 @@ func get_directions(headward, tailward):
 	return [direction_to_previous, direction_to_next]
 
 func set_sprite(direction_to_previous, direction_to_next):
-	sprite.frame = directions[[direction_to_previous, direction_to_next]]
+	frame = directions[[direction_to_previous, direction_to_next]]

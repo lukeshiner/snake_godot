@@ -2,15 +2,15 @@ extends Node2D
 
 export(int) var start_length = 3
 
-const SnakeSprite = preload("res://snake/snake_sprite.tscn")
 const sprite_size = 16
+onready var SnakeBody = preload("res://snake/SnakeBody.tscn")
 
 const directions = [Vector2.UP, Vector2.LEFT, Vector2.RIGHT, Vector2.DOWN]
 var direction = Vector2.RIGHT
 var next_direction = direction
 var apple_eaten = false
 
-onready var head = $SnakeSprite
+onready var head = $SnakeSectionSprite
 onready var sections = [head]
 
 func _ready():
@@ -28,17 +28,17 @@ func _ready():
 	set_tail()
 
 func add_section(location, previous, next):
-	var new_section = SnakeSprite.instance()
+	var new_section = SnakeBody.instance()
 	self.add_child(new_section)
 	new_section.global_position = location
-	var directions = new_section.get_directions(previous, next)
-	new_section.set_sprite(directions[0], directions[1])
+	var directions = new_section.sprite.get_directions(previous, next)
+	new_section.sprite.set_sprite(directions[0], directions[1])
 	sections.insert(1, new_section)
 
 func set_tail():
 	var last_section = sections[-1]
-	var directions = last_section.get_directions(sections[-2].global_position, null)
-	last_section.set_sprite(directions[0], directions[1])
+	var directions = last_section.sprite.get_directions(sections[-2].global_position, null)
+	last_section.sprite.set_sprite(directions[0], directions[1])
 
 func _input(event):
 	if event.is_action_released("up"):
@@ -83,7 +83,6 @@ func _on_Area2D_area_entered(area):
 	var collided_layer = area.collision_layer
 	if collided_layer == 8:
 		apple_eaten = true
-		print("eat")
-	else:
-		print(collided_layer)
-		print(area.get_parent())
+	elif collided_layer == 5:
+		get_tree().paused = true
+

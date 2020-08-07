@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://snake/SnakeSectionSprite.gd" type="Script" id=1]
+[ext_resource path="res://snake/snake.png" type="Texture" id=2]
+
+[node name="SnakeSectionSprite" type="Sprite"]
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 5
+script = ExtResource( 1 )
