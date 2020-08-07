@@ -4,6 +4,7 @@ export(int) var start_length = 3
 
 const sprite_size = 16
 onready var SnakeBody = preload("res://snake/SnakeBody.tscn")
+onready var FadeOut = preload("res://world/FadeOut.tscn")
 
 const directions = [Vector2.UP, Vector2.LEFT, Vector2.RIGHT, Vector2.DOWN]
 var direction = Vector2.RIGHT
@@ -117,5 +118,10 @@ func _on_Area2D_area_entered(area):
 		area.eat()
 		pickupSound.play()
 	elif collided_layer == 5:
-		stepTimer.stop()
-		lossSound.play()
+		game_over()
+
+func game_over():
+	stepTimer.stop()
+	lossSound.play()
+	var fade_out = FadeOut.instance()
+	get_tree().current_scene.add_child(fade_out)
